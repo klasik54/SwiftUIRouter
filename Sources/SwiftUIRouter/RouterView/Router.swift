@@ -33,6 +33,7 @@ public final class Router<T: Hashable>: ObservableObject {
         case set([T], animated: Bool)
         case popToRoot(animated: Bool)
         case present(T, presentationStyle: UIModalPresentationStyle, transitionStyle: UIModalTransitionStyle, animated: Bool, completion: VoidClosure?)
+        case dismiss(animated: Bool, completion: VoidClosure?)
         
     }
     
@@ -103,6 +104,17 @@ public final class Router<T: Hashable>: ObservableObject {
             animated: animated,
             completion: completion
         )
+    }
+    
+    /// Dismisses the view controller that was presented modally.
+    /// - Parameters:
+    ///    - animated: A Boolean value that indicates whether the transition is to be animated.
+    ///    - completion: The block to execute after the view controller is dismissed.
+    public func dismiss(
+        animated: Bool = true,
+        completion: VoidClosure? = nil
+    ) {
+        step = .dismiss(animated: animated, completion: completion)
     }
 
 }

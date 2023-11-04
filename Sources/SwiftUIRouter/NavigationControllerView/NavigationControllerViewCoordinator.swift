@@ -62,6 +62,9 @@ private extension NavigationControllerViewCoordinator {
                         animated: animated,
                         completion: completion
                     )
+                    
+                case .dismiss(let animated, let completion):
+                    dismiss(animated: animated, completion: completion)
 
                 case .none:
                     break
@@ -106,6 +109,10 @@ private extension NavigationControllerViewCoordinator {
         viewController.modalPresentationStyle = presentationStyle
         
         navigationController.present(viewController, animated: animated, completion: completion)
+    }
+    
+    func dismiss(animated: Bool, completion: VoidClosure?) {
+        navigationController.dismiss(animated: animated, completion: completion)
     }
     
     // MARK: - Helpers
