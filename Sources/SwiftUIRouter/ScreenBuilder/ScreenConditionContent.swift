@@ -43,11 +43,11 @@ public struct ScreenConditionContent<TrueContent: View, FalseContent: View>: Vie
         }
     }
     
-    public var navigationBarDisplayMode: UINavigationItem.LargeTitleDisplayMode {
+    public var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode {
         if let trueContent = trueContent as? WithNavigationBarProperties {
-            return trueContent.navigationBarDisplayMode
+            return trueContent.largeTitleDisplayMode
         } else if let falseContent = falseContent as? WithNavigationBarProperties {
-            return falseContent.navigationBarDisplayMode
+            return falseContent.largeTitleDisplayMode
         } else {
             return .automatic
         }

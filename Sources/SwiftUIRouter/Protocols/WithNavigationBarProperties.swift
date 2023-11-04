@@ -28,7 +28,7 @@ public protocol WithNavigationBarProperties {
     var hidesBackButton: Bool { get }
     
     /// The display mode for the navigation bar.
-    var navigationBarDisplayMode: UINavigationItem.LargeTitleDisplayMode { get }
+    var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode { get }
     
 }
 
@@ -36,6 +36,6 @@ public extension WithNavigationBarProperties {
     
     var navigationTitle: String? { nil }
     var hidesBackButton: Bool { false }
-    var navigationBarDisplayMode: UINavigationItem.LargeTitleDisplayMode { .automatic }
+    var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode { .automatic }
     
 }

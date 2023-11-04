@@ -116,7 +116,7 @@ private extension NavigationControllerViewCoordinator {
         
         if let screen = view as? WithNavigationBarProperties {
             viewController.title = screen.navigationTitle
-            viewController.navigationItem.largeTitleDisplayMode = screen.navigationBarDisplayMode
+            viewController.navigationItem.largeTitleDisplayMode = screen.largeTitleDisplayMode
             viewController.navigationItem.hidesBackButton = screen.hidesBackButton
         }
         

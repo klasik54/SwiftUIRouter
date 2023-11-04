@@ -12,11 +12,19 @@ let package = Package(
         .library(
             name: "SwiftUIRouter",
             targets: ["SwiftUIRouter"]
+        ),
+        .library(
+            name: "SwiftUITabBar",
+            targets: ["SwiftUITabBar"]
         )
     ],
     targets: [
         .target(
             name: "SwiftUIRouter",
+            dependencies: []
+        ),
+        .target(
+            name: "SwiftUITabBar",
             dependencies: []
         )
     ]

@@ -23,9 +23,6 @@ struct NavigationControllerView<T: Hashable, Content: View>: UIViewControllerRep
     
     func makeUIViewController(context: Context) -> UINavigationController {
         let rootView = buildView(router.root)
-        let viewController = UIHostingController(rootView: rootView)
-
-        // navigationController.viewControllers = [viewController]
         navigationController.navigationBar.prefersLargeTitles = true
 
         return navigationController
