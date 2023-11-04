@@ -4,5 +4,20 @@
 import PackageDescription
 
 let package = Package(
-    name: "SwiftUIRouter"
+    name: "SwiftUIRouter",
+    platforms: [
+        .iOS(.v13)
+    ],
+    products: [
+        .library(
+            name: "SwiftUIRouter",
+            targets: ["SwiftUIRouter"]
+        )
+    ],
+    targets: [
+        .target(
+            name: "SwiftUIRouter",
+            dependencies: []
+        )
+    ]
 )
