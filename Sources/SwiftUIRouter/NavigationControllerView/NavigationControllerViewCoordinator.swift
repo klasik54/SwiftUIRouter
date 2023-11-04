@@ -65,6 +65,9 @@ private extension NavigationControllerViewCoordinator {
                     
                 case .dismiss(let animated, let completion):
                     dismiss(animated: animated, completion: completion)
+                    
+                case .showAlert(let alertModel):
+                    showAlert(alertModel: alertModel)
 
                 case .none:
                     break
@@ -113,6 +116,20 @@ private extension NavigationControllerViewCoordinator {
     
     func dismiss(animated: Bool, completion: VoidClosure?) {
         navigationController.dismiss(animated: animated, completion: completion)
+    }
+    
+    func showAlert(alertModel: AlertModel) {
+        let alertController = UIAlertController(
+            title: alertModel.title,
+            message: alertModel.message,
+            preferredStyle: alertModel.prefferdStyle
+        )
+        
+        alertModel.actions().forEach { action in
+            alertController.addAction(action)
+        }
+        
+        navigationController.present(alertController, animated: true)
     }
     
     // MARK: - Helpers

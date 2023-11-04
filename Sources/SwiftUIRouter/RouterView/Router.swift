@@ -10,7 +10,7 @@ import UIKit
 /// A router object that manages a navigation. Use this object to push, pop, and set paths on the navigation stack.
 /// A router object is responsible for managing the navigation of a single path. You use router objects in conjunction with ``SwiftUIRouter/RouterView`` to implement your app's navigation.
 /// - Parameters:
-/// - T: A type that represents a path.
+///    - T: A type that represents a path.
 /// ## Usage
 /// ``` swift
 ///  enum Path: Hashable {
@@ -34,6 +34,7 @@ public final class Router<T: Hashable>: ObservableObject {
         case popToRoot(animated: Bool)
         case present(T, presentationStyle: UIModalPresentationStyle, transitionStyle: UIModalTransitionStyle, animated: Bool, completion: VoidClosure?)
         case dismiss(animated: Bool, completion: VoidClosure?)
+        case showAlert(alertModel: AlertModel)
         
     }
     
@@ -115,6 +116,13 @@ public final class Router<T: Hashable>: ObservableObject {
         completion: VoidClosure? = nil
     ) {
         step = .dismiss(animated: animated, completion: completion)
+    }
+    
+    /// Show an alert in .alert or .actionSheet style.
+    /// - Parameters:
+    ///   - alertModel: An ``SwiftUIRouter/AlertModel`` to show.
+    public func showAlert(_ alertModel: AlertModel) {
+        step = .showAlert(alertModel: alertModel)
     }
 
 }
