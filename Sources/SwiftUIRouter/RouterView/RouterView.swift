@@ -46,13 +46,21 @@ import SwiftUI
 /// ```
 public struct RouterView<T: Hashable, Content: View>: View {
     
-    @ObservedObject
-    var router: Router<T>
+    // MARK: - Properties
     
-    @ScreenBuilder var buildView: (T) -> Content
+    @ObservedObject private var router: Router<T>
+    private let navigationController: UINavigationController
+    @ScreenBuilder private var buildView: (T) -> Content
     
-    public init(router: Router<T>, @ScreenBuilder buildView: @escaping (T) -> Content) {
+    // MARK: - Init
+    
+    public init(
+        router: Router<T>,
+        navigationController: UINavigationController = UINavigationController(),
+        @ScreenBuilder buildView: @escaping (T) -> Content
+    ) {
         self.router = router
+        self.navigationController = navigationController
         self.buildView = buildView
     }
     
@@ -73,7 +81,7 @@ public struct RouterView<T: Hashable, Content: View>: View {
 private extension RouterView {
     
     func content() -> some View {
-        NavigationControllerView(router: router) { path in
+        NavigationControllerView(router: router, navigationController: navigationController) { path in
             buildView(path)
         }
         .environmentObject(router)

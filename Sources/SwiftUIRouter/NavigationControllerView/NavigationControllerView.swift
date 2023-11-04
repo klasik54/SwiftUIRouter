@@ -17,7 +17,19 @@ struct NavigationControllerView<T: Hashable, Content: View>: UIViewControllerRep
     
     @ObservedObject var router: Router<T>
     @ScreenBuilder let buildView: (T) -> Content
-    let navigationController = UINavigationController()
+    let navigationController: UINavigationController
+    
+    // MARK: - Init
+    
+    public init(
+        router: Router<T>,
+        navigationController: UINavigationController = UINavigationController(),
+        @ScreenBuilder buildView: @escaping (T) -> Content
+    ) {
+        self.router = router
+        self.navigationController = navigationController
+        self.buildView = buildView
+    }
     
     // MARK: - Methods
     
