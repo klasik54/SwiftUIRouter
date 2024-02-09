@@ -54,12 +54,13 @@ private extension NavigationControllerViewCoordinator {
                 case .popToRoot(let animated):
                     popToRoot(animated: animated)
                     
-                case .present(let path, let presentationStyle, let transitionStyle, let animated, let completion):
+                case .present(let path, let presentationStyle, let transitionStyle, let animated, let detents, let completion):
                     present(
                         path,
                         presentationStyle: presentationStyle,
                         transitionStyle: transitionStyle,
                         animated: animated,
+                        detents: detents,
                         completion: completion
                     )
                     
@@ -105,11 +106,13 @@ private extension NavigationControllerViewCoordinator {
         presentationStyle: UIModalPresentationStyle,
         transitionStyle: UIModalTransitionStyle,
         animated: Bool,
+        detents: [UISheetPresentationController.Detent],
         completion: VoidClosure?
     ) {
         let viewController = createViewController(from: path)
         viewController.modalTransitionStyle = transitionStyle
         viewController.modalPresentationStyle = presentationStyle
+        viewController.sheetPresentationController?.detents = detents
         
         navigationController.present(viewController, animated: animated, completion: completion)
     }

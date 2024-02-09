@@ -32,7 +32,7 @@ public final class Router<T>: ObservableObject {
         case pop(animated: Bool)
         case set([T], animated: Bool)
         case popToRoot(animated: Bool)
-        case present(T, presentationStyle: UIModalPresentationStyle, transitionStyle: UIModalTransitionStyle, animated: Bool, completion: VoidClosure?)
+        case present(T, presentationStyle: UIModalPresentationStyle, transitionStyle: UIModalTransitionStyle, animated: Bool, detents: [UISheetPresentationController.Detent], completion: VoidClosure?)
         case dismiss(animated: Bool, completion: VoidClosure?)
         case showAlert(alertModel: AlertModel)
         
@@ -96,6 +96,7 @@ public final class Router<T>: ObservableObject {
         presentationStyle: UIModalPresentationStyle = .automatic,
         transitionStyle: UIModalTransitionStyle = .coverVertical,
         animated: Bool = true,
+        detents: [UISheetPresentationController.Detent] = [],
         completion: VoidClosure? = nil
     ) {
         step = .present(
@@ -103,6 +104,7 @@ public final class Router<T>: ObservableObject {
             presentationStyle: presentationStyle,
             transitionStyle: transitionStyle,
             animated: animated,
+            detents: detents,
             completion: completion
         )
     }
