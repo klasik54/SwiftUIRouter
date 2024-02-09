@@ -8,7 +8,7 @@
 import SwiftUI
 import Combine
 
-final class NavigationControllerViewCoordinator<T: Hashable, Content: View> {
+final class NavigationControllerViewCoordinator<T, Content: View> {
     
     // MARK: - Properties
     
@@ -142,6 +142,7 @@ private extension NavigationControllerViewCoordinator {
             viewController.title = screen.navigationTitle
             viewController.navigationItem.largeTitleDisplayMode = screen.largeTitleDisplayMode
             viewController.navigationItem.hidesBackButton = screen.hidesBackButton
+            viewController.navigationController?.navigationBar.prefersLargeTitles = true
         }
         
         return viewController

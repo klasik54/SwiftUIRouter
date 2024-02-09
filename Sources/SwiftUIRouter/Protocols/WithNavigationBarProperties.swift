@@ -30,6 +30,9 @@ public protocol WithNavigationBarProperties {
     /// The display mode for the navigation bar.
     var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode { get }
     
+    /// A Boolean value that indicates whether the navigation bar should use a large title.
+    var prefersLargeTitles: Bool { get }
+    
 }
 
 public extension WithNavigationBarProperties {
@@ -37,5 +40,6 @@ public extension WithNavigationBarProperties {
     var navigationTitle: String? { nil }
     var hidesBackButton: Bool { false }
     var largeTitleDisplayMode: UINavigationItem.LargeTitleDisplayMode { .automatic }
+    var prefersLargeTitles: Bool { true }
     
 }

@@ -22,7 +22,7 @@ import UIKit
 ///
 ///  @ObservedObject var router = Router<Path>(root: .home)
 ///  ```
-public final class Router<T: Hashable>: ObservableObject {
+public final class Router<T>: ObservableObject {
     
     // MARK: - Steps
     

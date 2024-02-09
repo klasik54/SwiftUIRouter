@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavigationControllerView<T: Hashable, Content: View>: UIViewControllerRepresentable {
+struct NavigationControllerView<T, Content: View>: UIViewControllerRepresentable {
 
     // MARK: - Typealias
     

@@ -44,7 +44,7 @@ import SwiftUI
 ///
 ///  }
 /// ```
-public struct RouterView<T: Hashable, Content: View>: View {
+public struct RouterView<T, Content: View>: View {
     
     // MARK: - Properties
     
