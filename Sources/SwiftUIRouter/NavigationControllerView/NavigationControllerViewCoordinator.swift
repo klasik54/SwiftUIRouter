@@ -112,7 +112,9 @@ private extension NavigationControllerViewCoordinator {
         let viewController = createViewController(from: path)
         viewController.modalTransitionStyle = transitionStyle
         viewController.modalPresentationStyle = presentationStyle
-        viewController.sheetPresentationController?.detents = detents
+        if !detents.isEmpty {
+            viewController.sheetPresentationController?.detents = detents
+        }
         
         navigationController.present(viewController, animated: animated, completion: completion)
     }
